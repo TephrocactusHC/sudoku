@@ -1,7 +1,7 @@
 # sudoku
 Generate sudoku problems &amp; solve sudoku problems
 
-*for Software Engineering*
+*for Software Engineering Course*
 # TODO
 - [x] Differents Ends
 - [x] Input through command line parameters
