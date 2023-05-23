@@ -3,6 +3,7 @@ Generate sudoku problems &amp; solve sudoku problems
 # TODO
 - [x] Differents Ends
 - [x] Input through command line parameters
+- [x] Logo.
 # Usage
 You can use the following command:
 ```
