@@ -3,6 +3,7 @@ mod solve;
 use std::env;
 
 fn main() {
+    print_text_art();
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
@@ -58,5 +59,19 @@ fn print_help() {
     println!("-m <num>       Number of unknowns in each puzzle (default: 20)");
     println!("-s             Solve the generated puzzles");
     println!("-h             Display this help message");
+}
+        
+fn print_text_art() {
+    let art = "
+
+░██████╗██╗░░░██╗██████╗░░█████╗░██╗░░██╗██╗░░░██╗
+██╔════╝██║░░░██║██╔══██╗██╔══██╗██║░██╔╝██║░░░██║
+╚█████╗░██║░░░██║██║░░██║██║░░██║█████═╝░██║░░░██║
+░╚═══██╗██║░░░██║██║░░██║██║░░██║██╔═██╗░██║░░░██║
+██████╔╝╚██████╔╝██████╔╝╚█████╔╝██║░╚██╗╚██████╔╝
+╚═════╝░░╚═════╝░╚═════╝░░╚════╝░╚═╝░░╚═╝░╚═════╝░
+        
+";
+         println!("{}", art);
 }
 
