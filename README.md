@@ -1,4 +1,5 @@
 # sudoku
 Generate sudoku problems &amp; solve sudoku problems
 # TODO
-- [ ] Differents Ends
+- [x] Differents Ends
+- [ ] Input through command line parameters

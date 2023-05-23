@@ -1,6 +1,8 @@
 use std::fs::File;
 use std::io::Write;
 use rand::Rng;
+use crate::solve::is_valid;
+
 
 pub fn generate_sudoku(num_puzzles: usize, num_unknowns: usize) {
     let mut rng = rand::thread_rng();
@@ -10,6 +12,10 @@ pub fn generate_sudoku(num_puzzles: usize, num_unknowns: usize) {
 
         // Fill in a complete Sudoku solution
         solve_sudoku(&mut puzzle);
+
+        // Randomly shuffle the rows and columns
+        shuffle_rows(&mut puzzle, &mut rng);
+        shuffle_columns(&mut puzzle, &mut rng);
 
         // Remove random numbers to create the puzzle
         for _ in 0..num_unknowns {
@@ -51,20 +57,31 @@ fn solve_sudoku(puzzle: &mut Vec<Vec<u32>>) -> bool {
     true
 }
 
-fn is_valid(puzzle: &Vec<Vec<u32>>, row: usize, col: usize, num: u32) -> bool {
-    for i in 0..9 {
-        if puzzle[row][i] == num {
-            return false;
-        }
-        if puzzle[i][col] == num {
-            return false;
-        }
-        let box_row = 3 * (row / 3) + i / 3;
-        let box_col = 3 * (col / 3) + i % 3;
-        if puzzle[box_row][box_col] == num {
-            return false;
+
+fn shuffle_rows(puzzle: &mut Vec<Vec<u32>>, rng: &mut impl Rng) {
+    for _ in 0..3 {
+        let block_start = rng.gen_range(0, 3) * 3;
+        let block_end = block_start + 3;
+        let new_block_start = rng.gen_range(0, 3) * 3;
+
+        for i in block_start..block_end {
+            let new_i = new_block_start + (i - block_start);
+            puzzle.swap(i, new_i);
         }
     }
-    true
+}
+
+fn shuffle_columns(puzzle: &mut Vec<Vec<u32>>, rng: &mut impl Rng) {
+    transpose(puzzle); // Transpose the puzzle
+    shuffle_rows(puzzle, rng); // Shuffle the rows
+    transpose(puzzle); // Transpose it back to the original orientation
+}
+
+fn transpose(puzzle: &mut Vec<Vec<u32>>) {
+    for i in 0..9 {
+        for j in (i + 1)..9 {
+            puzzle.swap(i, j);
+        }
+    }
 }
 

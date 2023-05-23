@@ -2,8 +2,7 @@ use std::fs::File;
 use std::fs;
 use std::io::{BufRead, BufReader};
 
-
-fn solve_sudoku(puzzle: &mut Vec<Vec<u32>>) -> bool {
+pub fn solve_sudoku(puzzle: &mut Vec<Vec<u32>>) -> bool {
     for row in 0..9 {
         for col in 0..9 {
             if puzzle[row][col] == 0 {
@@ -23,7 +22,7 @@ fn solve_sudoku(puzzle: &mut Vec<Vec<u32>>) -> bool {
     true
 }
 
-fn is_valid(puzzle: &Vec<Vec<u32>>, row: usize, col: usize, num: u32) -> bool {
+pub fn is_valid(puzzle: &Vec<Vec<u32>>, row: usize, col: usize, num: u32) -> bool {
     for i in 0..9 {
         if puzzle[row][i] == num {
             return false;
@@ -40,7 +39,7 @@ fn is_valid(puzzle: &Vec<Vec<u32>>, row: usize, col: usize, num: u32) -> bool {
     true
 }
 
-fn display_solution(puzzle: &Vec<Vec<u32>>) {
+pub fn display_solution(puzzle: &Vec<Vec<u32>>) {
     for row in puzzle {
         let line: Vec<String> = row.iter().map(|&n| n.to_string()).collect();
         let line_str = line.join(" ");
@@ -92,4 +91,5 @@ pub fn solve_sudoku_puzzles() {
         }
     }
 }
+
 
