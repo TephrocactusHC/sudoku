@@ -24,5 +24,8 @@ For more, you can use -h for help:
 ```
 cargo run -- -h
 ```
+# Display
+The following is a project demonstration.
+![a gif](pre.gif)
 # More
 In fact, I haven't delved into the mathematical principles behind the Sudoku game, such as why there are only 36 final solutions in situations that are asymmetric and non-repetitive. Therefore, I don't know what problems generating a large number of final solutions will cause. This project is for entertainment purposes only. Due to the use of backtracking algorithms, performance may be very poor once the quantity becomes large.
